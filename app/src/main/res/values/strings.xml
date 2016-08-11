@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Training</string>
+    <array name="xingzuo">
+        <item>白羊</item>
+        <item>金牛</item>
+        <item>双子</item>
+        <item>巨蟹</item>
+        <item>狮子</item>
+        <item>处女</item>
+        <item>天秤</item>
+        <item>天蝎</item>
+        <item>射手</item>
+        <item>摩羯</item>
+        <item>水瓶</item>
+        <item>双鱼</item>
+    </array>
+    <array name="xingzuo2">
+        <item>\"\"</item>
+
+
+    </array>
+</resources>

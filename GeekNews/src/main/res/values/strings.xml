@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">GeekNews</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <array name="xingzuo">
+        <item>白羊</item>
+        <item>金牛</item>
+        <item>双子</item>
+        <item>巨蟹</item>
+        <item>狮子</item>
+        <item>处女</item>
+        <item>天秤</item>
+        <item>天蝎</item>
+        <item>射手</item>
+        <item>摩羯</item>
+        <item>水瓶</item>
+        <item>双鱼</item>
+    </array>
+    <array name="textSize">
+        <item>小</item>
+        <item>中</item>
+        <item>大</item>
+        <item>特大</item>
+    </array>
+    <array name="loadType">
+        <item>最佳效果(下载大图)</item>
+        <item>较省流量(智能下图)</item>
+        <item>极省流量(不下载图)</item>
+    </array>
+</resources>

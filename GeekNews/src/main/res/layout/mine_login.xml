@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#FFFFFF"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/mine_login_close"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_pop_close_normal"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.5"
+            android:lines="2"
+            android:text="登录后保存阅读习惯\n打造你的专属头条"
+            android:textSize="20sp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/editor_bg"
+            android:hint="手机号"
+            android:textColorHint="#acabab" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editor_bg"
+            android:hint="验证码" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="未注册手机验证后自动注册" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/button_bg"
+            android:text="进入头条"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="帐号密码登录"
+            android:textColor="#364fb4"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/split"
+            android:paddingBottom="10dp"
+            android:gravity="center"
+            android:text="更多登录方式"
+            android:textSize="20sp" />
+       <HorizontalScrollView
+           android:layout_margin="20dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:orientation="horizontal"
+               android:layout_height="match_parent">
+               <circleImageViewlib.CircleImageView
+                   android:layout_margin="5dp"
+                   android:id="@+id/iv_log_qq"
+                   android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:layout_centerHorizontal="true"
+                   android:src="@mipmap/ic_qq_login_normal" />
+               <circleImageViewlib.CircleImageView
+                   android:id="@+id/iv_log_weixin"
+                   android:layout_margin="5dp"
+                   android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:layout_centerHorizontal="true"
+                   android:src="@mipmap/ic_weixin_login_normal" />
+               <circleImageViewlib.CircleImageView
+                   android:id="@+id/iv_log_weibo"
+                   android:layout_margin="5dp"
+                   android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:layout_centerHorizontal="true"
+                   android:src="@mipmap/ic_weibo_login_normal" />
+               <circleImageViewlib.CircleImageView
+                   android:id="@+id/iv_log_tencent"
+                   android:layout_margin="5dp"
+                   android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:layout_centerHorizontal="true"
+                   android:src="@mipmap/ic_tencent_login_normal" />
+               <circleImageViewlib.CircleImageView
+                   android:id="@+id/iv_log_renren"
+                   android:layout_margin="5dp"
+                   android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:layout_centerHorizontal="true"
+                   android:src="@mipmap/ic_renren_login_normal" />
+               <circleImageViewlib.CircleImageView
+                   android:id="@+id/iv_log_huawei"
+                   android:layout_margin="5dp"
+                   android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:layout_centerHorizontal="true"
+                   android:src="@mipmap/ic_huawei_login_normal" />
+           </LinearLayout>
+       </HorizontalScrollView>
+        <TextView
+            android:background="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+    </LinearLayout>
+
+</RelativeLayout>

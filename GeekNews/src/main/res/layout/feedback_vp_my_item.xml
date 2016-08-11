@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <circleImageViewlib.CircleImageView
+        android:layout_marginTop="10dp"
+        android:id="@+id/civ_feedback_head"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_head"/>
+    <TextView
+        android:id="@+id/tv_my_feedback"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/text_border"
+        android:layout_marginLeft="10dp"
+        android:padding="10dp"
+        android:layout_marginRight="40dp"
+        android:layout_toRightOf="@id/civ_feedback_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="这是我的意见"/>
+    <TextView
+        android:id="@+id/tv_my_feedback_time"
+        android:layout_margin="10dp"
+        android:layout_toRightOf="@id/civ_feedback_head"
+        android:layout_below="@id/tv_my_feedback"
+        android:maxLines="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

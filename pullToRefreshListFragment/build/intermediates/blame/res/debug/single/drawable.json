@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/zdr/AndroidStudioProjects/Training2/pullToRefreshListFragment/build/intermediates/res/merged/debug/drawable/indicator_bg_top.xml",
+        "source": "/home/zdr/AndroidStudioProjects/Training2/pullToRefreshListFragment/build/intermediates/exploded-aar/Training2/library/unspecified/res/drawable/indicator_bg_top.xml"
+    },
+    {
+        "merged": "/home/zdr/AndroidStudioProjects/Training2/pullToRefreshListFragment/build/intermediates/res/merged/debug/drawable/indicator_bg_bottom.xml",
+        "source": "/home/zdr/AndroidStudioProjects/Training2/pullToRefreshListFragment/build/intermediates/exploded-aar/Training2/library/unspecified/res/drawable/indicator_bg_bottom.xml"
+    }
+]
