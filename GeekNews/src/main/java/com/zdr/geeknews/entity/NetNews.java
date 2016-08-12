@@ -1,6 +1,7 @@
 package com.zdr.geeknews.entity;
 
 /**
+ * JSON解析类
  * Created by zdr on 16-8-5.
  */
 public class NetNews {
@@ -12,6 +13,7 @@ public class NetNews {
      * description : 腾讯科技
      * picUrl : http://inews.gtimg.com/newsapp_ls/0/463946704_300240/0
      * url : http://tech.qq.com/a/20160805/004409.htm
+     * type ： keji
      */
 
     private String ctime;
@@ -19,6 +21,7 @@ public class NetNews {
     private String description;
     private String picUrl;
     private String url;
+    private String type;
 
     public String getCtime() {
         return ctime;
@@ -58,5 +61,13 @@ public class NetNews {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

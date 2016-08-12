@@ -10,11 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * JSON解析类
  * Created by zdr on 16-8-6.
  */
 public class ParseJSON {
 
-    public static List<NetNews> parseJSON(String json) {
+    public static List<NetNews> parseJSON(String json,String type) {
         List<NetNews> temp = new ArrayList<>();
         try {
             JSONObject result = new JSONObject(json);
@@ -30,6 +31,8 @@ public class ParseJSON {
                 news.setPicUrl(ob.getString("picUrl"));
                 news.setUrl(ob.getString("url"));
                 news.setTitle(ob.getString("title"));
+                news.setType(type);
+
                 temp.add(news);
 
             }

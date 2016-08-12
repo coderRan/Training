@@ -1,14 +1,15 @@
 package com.zdr.geeknews.fragmentdeom;
 
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,18 +19,14 @@ import com.android.volley.toolbox.Volley;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.zdr.geeknews.R;
+import com.zdr.geeknews.WebViewItemActivity;
 import com.zdr.geeknews.adapter.NetNewsAdapter;
 import com.zdr.geeknews.entity.NetNews;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.NetNewsDao;
 import utils.CallBack;
 import utils.Constants;
 import utils.ParseJSON;
@@ -46,10 +43,11 @@ public class NetNewsFragment extends BaseFragment {
     private NetNewsAdapter adapter;
     private View v;
     private int page = 1;
+    private NetNewsDao newsDao;
     String url = "http://apis.baidu.com/txapi/keji/keji?num=10&page=";
     RequestQueue queue;
     private boolean isPrepared = false;
-
+    private String newsType;
     //表明是否第一次加载，是否调用lazyInitData方法
     private boolean isFirst = true;
 
@@ -64,6 +62,10 @@ public class NetNewsFragment extends BaseFragment {
     @Override
     public void lazyInitData() {
         if (isPrepared && isVisible && isFirst) {
+            mData.clear();
+            mData.addAll(newsDao.findNewsByType(newsType));
+            adapter.notifyDataSetChanged();
+            ptrLv.onRefreshComplete();
             VolleyUtil.get(url + page)
                     .setCallBack(new NetCallback())
                     .buile()
@@ -79,12 +81,14 @@ public class NetNewsFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         queue = Volley.newRequestQueue(getActivity());
         url = getArguments().getString("api");
+        newsDao = new NetNewsDao(getActivity());
 
+        newsType = UtilsMethod.getUrlName(url);
 
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         if(v==null) {
@@ -106,7 +110,14 @@ public class NetNewsFragment extends BaseFragment {
                     loadMore();
                 }
             });
-
+            ptrLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(getActivity(), WebViewItemActivity.class);
+                    intent.putExtra("url", mData.get(position-1).getUrl());
+                    startActivity(intent);
+                }
+            });
             isPrepared = true;
             lazyInitData();
         }
@@ -144,15 +155,24 @@ public class NetNewsFragment extends BaseFragment {
 
         @Override
         public void onSuccess(String respone) {
-            List<NetNews> temp = ParseJSON.parseJSON(respone);
+            List<NetNews> temp = ParseJSON.parseJSON(respone,newsType);
             mData.clear();
             mData.addAll(temp);
             adapter.notifyDataSetChanged();
             ptrLv.onRefreshComplete();
+
+            newsDao.delNewsByType(newsType);
+            newsDao.addALLNetNews(temp);
         }
 
         @Override
         public void onError(String err) {
+            List<NetNews> list = newsDao.findNewsByType(newsType);
+            mData.clear();
+            mData.addAll(list);
+            adapter.notifyDataSetChanged();
+            ptrLv.onRefreshComplete();
+
             Log.e("VOLLEY_ERR", err.toString());
         }
     }
@@ -161,63 +181,24 @@ public class NetNewsFragment extends BaseFragment {
 
         @Override
         public void onSuccess(String respone) {
-            //缓存到SD卡
-            writeSD(respone);
 
-            List<NetNews> temp = ParseJSON.parseJSON(respone);
+            List<NetNews> temp = ParseJSON.parseJSON(respone,newsType);
             mData.addAll(temp);
-
             adapter.notifyDataSetChanged();
             ptrLv.onRefreshComplete();
+
+            newsDao.addALLNetNews(temp);
         }
 
         @Override
         public void onError(String err) {
+
+            adapter.notifyDataSetChanged();
+            ptrLv.onRefreshComplete();
+
             Log.e("VOLLEY_ERR", err.toString());
         }
     }
-    public boolean writeSD(String json){
-        if(!UtilsMethod.isGranExternalRW(getActivity())) {
-            return false;
-        }
 
-        File file = new File(Environment.getExternalStorageDirectory(), Constants.CACHE_FILE_DIR);
-        if(!file.exists()){
-            file.mkdir();
-        }
 
-        File jsonFile = new File(file, getUrlName(url)+".json");
-        Log.e("FILE:", getUrlName(url) + ".json");
-        OutputStream fos = null;
-        try {
-            fos = new FileOutputStream(jsonFile);
-            fos.write(json.getBytes());
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            if(fos!=null){
-                try {
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }
-
-        return true;
-    }
-    public void readSD(){
-
-    }
-
-    private String getUrlName(String u){
-
-        int start = u.lastIndexOf("/");
-        int end = u.lastIndexOf("?");
-        return u.substring(start, end);
-    }
 }
