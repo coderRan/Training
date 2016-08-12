@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * JSON解析类
+ * JSON
  * Created by zdr on 16-8-6.
  */
 public class ParseJSON {
