@@ -1,0 +1,28 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zdr.geeknews.fragmentdeom.VideoFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ededed"
+        android:orientation="vertical">
+        <android.support.v7.widget.Toolbar
+            android:layout_alignParentTop="true"
+            android:id="@+id/tl_video"
+            android:background="#ff0000"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+        </android.support.v7.widget.Toolbar>
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/ptl_video"
+            android:background="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.handmark.pulltorefresh.library.PullToRefreshListView>
+    </LinearLayout>
+</FrameLayout>

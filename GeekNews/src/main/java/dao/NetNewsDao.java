@@ -19,7 +19,6 @@ import utils.Constants;
  * Created by zdr on 16-8-12.
  */
 public class NetNewsDao {
-    List<NetNews> mData = new ArrayList<>();
 
     private NewsSqlLite openHelper;
     private SQLiteDatabase readDB;
@@ -35,7 +34,7 @@ public class NetNewsDao {
         List<NetNews> list = new ArrayList<>();
 
         Cursor cursor = readDB.query(
-                Constants.NetNewsDB.TBL_NAME,
+                Constants.NetNewsDB.TAB_NAME,
                 null,Constants.NetNewsDB.COL_TYPE + " = ?",
                 new String[]{type}, null, null, null
         );
@@ -56,7 +55,6 @@ public class NetNewsDao {
 
     public Long addNetNews(NetNews nn) {
         writDB = openHelper.getWritableDatabase();
-
         ContentValues values = new ContentValues();
         values.put(Constants.NetNewsDB.COL_CTIME, nn.getCtime());
         values.put(Constants.NetNewsDB.COL_TITLE, nn.getTitle());
@@ -65,7 +63,7 @@ public class NetNewsDao {
         values.put(Constants.NetNewsDB.COL_URL_PIC,nn.getPicUrl());
         values.put(Constants.NetNewsDB.COL_TYPE,nn.getType());
 
-        Long result = writDB.insert(Constants.NetNewsDB.TBL_NAME, null, values);
+        Long result = writDB.insert(Constants.NetNewsDB.TAB_NAME, null, values);
 
         writDB.close();
 
@@ -80,7 +78,7 @@ public class NetNewsDao {
     }
     public int delNewsByType(String type){
         writDB = openHelper.getWritableDatabase();
-        return writDB.delete(Constants.NetNewsDB.TBL_NAME,
+        return writDB.delete(Constants.NetNewsDB.TAB_NAME,
                 Constants.NetNewsDB.COL_TYPE+ " = ?", new String[]{type});
     }
 }

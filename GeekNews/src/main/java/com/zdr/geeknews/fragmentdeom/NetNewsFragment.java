@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.NetNewsDao;
+import dao.NetNewsKeepDao;
 import utils.CallBack;
 import utils.Constants;
 import utils.ParseJSON;
@@ -50,7 +51,7 @@ public class NetNewsFragment extends BaseFragment {
     private String newsType;
     //表明是否第一次加载，是否调用lazyInitData方法
     private boolean isFirst = true;
-
+    NetNewsKeepDao keepDao;
     public NetNewsFragment() {
         // Required empty public constructor
 
@@ -85,6 +86,8 @@ public class NetNewsFragment extends BaseFragment {
 
         newsType = UtilsMethod.getUrlName(url);
 
+        keepDao = new NetNewsKeepDao(getActivity());
+
     }
 
     @Override
@@ -95,6 +98,7 @@ public class NetNewsFragment extends BaseFragment {
             v = inflater.inflate(R.layout.fragment_net_news, container, false);
             ptrLv = (PullToRefreshListView) v.findViewById(R.id.ptr);
             mData = new ArrayList<>();
+
             adapter = new NetNewsAdapter(mData, getActivity());
             ptrLv.setAdapter(adapter);
             ptrLv.setMode(PullToRefreshBase.Mode.BOTH);
@@ -114,7 +118,9 @@ public class NetNewsFragment extends BaseFragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(getActivity(), WebViewItemActivity.class);
-                    intent.putExtra("url", mData.get(position-1).getUrl());
+                    intent.putExtra("NetNews", mData.get(position - 1));
+
+                    intent.putExtra("isKeep", keepDao.isKeep(mData.get(position - 1).getUrl()));
                     startActivity(intent);
                 }
             });
@@ -173,7 +179,7 @@ public class NetNewsFragment extends BaseFragment {
             adapter.notifyDataSetChanged();
             ptrLv.onRefreshComplete();
 
-            Log.e("VOLLEY_ERR", err.toString());
+            Log.e("VOLLEY_ERR", err);
         }
     }
 
@@ -196,9 +202,7 @@ public class NetNewsFragment extends BaseFragment {
             adapter.notifyDataSetChanged();
             ptrLv.onRefreshComplete();
 
-            Log.e("VOLLEY_ERR", err.toString());
+            Log.e("VOLLEY_ERR", err);
         }
     }
-
-
 }

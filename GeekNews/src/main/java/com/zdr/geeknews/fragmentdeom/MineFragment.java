@@ -20,6 +20,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import com.zdr.geeknews.FeedbackActivity;
+import com.zdr.geeknews.KeepActivity;
 import com.zdr.geeknews.R;
 import com.zdr.geeknews.SettingsActivity;
 
@@ -31,6 +32,7 @@ public class MineFragment extends Fragment {
     RelativeLayout bt;
     RelativeLayout login;
     Button btSettings;
+    Button btKeeps;
 
     public MineFragment() {
         // Required empty public constructor
@@ -44,12 +46,15 @@ public class MineFragment extends Fragment {
         bt = (RelativeLayout) v.findViewById(R.id.rl_feedback);
         login = (RelativeLayout) v.findViewById(R.id.rl_login);
         btSettings = (Button) v.findViewById(R.id.bt_mine_settings);
+        btKeeps = (Button) v.findViewById(R.id.bt_keep);
 
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), FeedbackActivity.class);
                 startActivity(intent);
+
+
             }
         });
         btSettings.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +62,7 @@ public class MineFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), SettingsActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.left_in, R.anim.left_out);
             }
         });
 
@@ -91,6 +97,15 @@ public class MineFragment extends Fragment {
                 popupWindow.setAnimationStyle(R.style.popuo_anim);
 
                 popupWindow.showAtLocation(v, Gravity.NO_GRAVITY, 0, p.y - view.getHeight());
+            }
+        });
+
+        btKeeps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), KeepActivity.class);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.left_in, R.anim.left_out);
             }
         });
         return v;

@@ -16,16 +16,16 @@
         "source": "/home/zdr/AndroidStudioProjects/Training2/sample/src/main/res/layout/activity_ptr_webview2.xml"
     },
     {
+        "merged": "/home/zdr/AndroidStudioProjects/Training2/sample/build/intermediates/res/merged/debug/layout/activity_ptr_list_fragment.xml",
+        "source": "/home/zdr/AndroidStudioProjects/Training2/sample/src/main/res/layout/activity_ptr_list_fragment.xml"
+    },
+    {
         "merged": "/home/zdr/AndroidStudioProjects/Training2/sample/build/intermediates/res/merged/debug/layout/activity_ptr_scrollview.xml",
         "source": "/home/zdr/AndroidStudioProjects/Training2/sample/src/main/res/layout/activity_ptr_scrollview.xml"
     },
     {
         "merged": "/home/zdr/AndroidStudioProjects/Training2/sample/build/intermediates/res/merged/debug/layout/activity_ptr_viewpager.xml",
         "source": "/home/zdr/AndroidStudioProjects/Training2/sample/src/main/res/layout/activity_ptr_viewpager.xml"
-    },
-    {
-        "merged": "/home/zdr/AndroidStudioProjects/Training2/sample/build/intermediates/res/merged/debug/layout/activity_ptr_list_fragment.xml",
-        "source": "/home/zdr/AndroidStudioProjects/Training2/sample/src/main/res/layout/activity_ptr_list_fragment.xml"
     },
     {
         "merged": "/home/zdr/AndroidStudioProjects/Training2/sample/build/intermediates/res/merged/debug/layout/layout_listview_in_viewpager.xml",

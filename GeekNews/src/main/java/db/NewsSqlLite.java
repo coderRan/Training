@@ -19,6 +19,10 @@ public class NewsSqlLite extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(Constants.NetNewsDB.getCreateDBSQL());
+
+        //创建newsType表
+        db.execSQL(Constants.NewsTypeDB.getCreateDBSQL());
+
     }
 
     @Override

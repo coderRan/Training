@@ -1,22 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.zdr.geeknews.WebViewItemActivity">
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
+
+    <RelativeLayout
+        android:id="@+id/web_top"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:id="@+id/progressBar"
-        android:max="100"
-        />
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:max="100" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/left_back_button_normal" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/morebutton_dynamic_normal" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/web_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
+        android:background="#ededed"
+        android:focusable="true"
+        android:focusableInTouchMode="true" >
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@drawable/keep_editor_bg"
+            android:textSize="15sp"
+            android:hint="写评论..." />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@mipmap/comment_icon" />
+
+        <ImageView
+            android:id="@+id/iv_keep"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@mipmap/b_film_star_edge" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@mipmap/chatroom_icon_share1" />
+    </LinearLayout>
+
     <WebView
         android:id="@+id/wb_item"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:layout_above="@id/web_bottom"
+        android:layout_below="@id/web_top">
     </WebView>
+    <LinearLayout
+        android:layout_above="@id/wb_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f70000" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/wb_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#fd0000" />
+    </LinearLayout>
+</RelativeLayout>
+    <!--ios20160803-->

@@ -3,17 +3,127 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.zdr.geeknews.fragmentdeom.HomeFragment">
-    <android.support.design.widget.TabLayout
+    <android.support.v7.widget.Toolbar
+        android:layout_alignParentTop="true"
+        android:id="@+id/tl_main"
+        android:background="#ff0000"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:id="@+id/tabs">
-    </android.support.design.widget.TabLayout>
+        android:layout_height="?attr/actionBarSize">
+
+    </android.support.v7.widget.Toolbar>
+    <RelativeLayout
+        android:layout_below="@+id/tl_main"
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+       <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/iv_del"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:paddingRight="5dp"
+            android:src="@mipmap/type_ic_add" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_toLeftOf="@id/iv_del">
+        </android.support.design.widget.TabLayout>
+
+        <ImageView
+            android:id="@+id/iv_dark"
+            android:layout_centerVertical="true"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:layout_toLeftOf="@id/iv_del"
+            android:src="@mipmap/ic_category_right_edge_dark"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/ll_shwoType"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_top"
+        android:background="#f4f4f4"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/tv_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/grid_item_bg"
+                    android:text="编辑"
+                    android:textColor="#ff0000"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/tv_edit"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="15dp"
+                    android:text="我的频道"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+            <com.zdr.geeknews.view.NewsTypeGridView
+                android:id="@+id/gv_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:horizontalSpacing="5dp"
+                android:numColumns="4"
+                android:verticalSpacing="5dp">
+
+            </com.zdr.geeknews.view.NewsTypeGridView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="频道推荐"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <com.zdr.geeknews.view.NewsTypeGridView
+                android:id="@+id/gv_type2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:horizontalSpacing="5dp"
+                android:numColumns="4"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:verticalSpacing="5dp">
+
+            </com.zdr.geeknews.view.NewsTypeGridView>
+        </LinearLayout>
+    </ScrollView>
+
 
     <android.support.v4.view.ViewPager
-        android:layout_below="@id/tabs"
+        android:id="@+id/vp_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/vp_home">
-
-    </android.support.v4.view.ViewPager>
+        android:layout_below="@id/ll_shwoType"></android.support.v4.view.ViewPager>
 </RelativeLayout>

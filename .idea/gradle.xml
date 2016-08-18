@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/pullToRefreshListFragment" />
             <option value="$PROJECT_DIR$/pullToRefreshViewPager" />
             <option value="$PROJECT_DIR$/sample" />
+            <option value="$PROJECT_DIR$/toolbar" />
           </set>
         </option>
         <option name="myModules">
@@ -30,6 +31,7 @@
             <option value="$PROJECT_DIR$/pullToRefreshListFragment" />
             <option value="$PROJECT_DIR$/pullToRefreshViewPager" />
             <option value="$PROJECT_DIR$/sample" />
+            <option value="$PROJECT_DIR$/toolbar" />
           </set>
         </option>
       </GradleProjectSettings>

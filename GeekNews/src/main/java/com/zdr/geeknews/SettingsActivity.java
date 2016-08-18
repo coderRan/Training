@@ -3,10 +3,12 @@ package com.zdr.geeknews;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -19,6 +21,8 @@ public class SettingsActivity extends AppCompatActivity {
     TextView tvLoadType;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+    ImageView ivDel;
+    TextView tvGotoFeedback;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +31,8 @@ public class SettingsActivity extends AppCompatActivity {
         rl3 = (RelativeLayout) findViewById(R.id.settings_rl3);
         tvTextSize = (TextView) findViewById(R.id.settings_rl2_size);
         tvLoadType = (TextView) findViewById(R.id.settings_rl3_loadType);
+        ivDel = (ImageView) findViewById(R.id.iv_settings_del);
+        tvGotoFeedback = (TextView) findViewById(R.id.tv_goto_feeback);
 
         sp = getSharedPreferences(Constants.SP_FILE, Context.MODE_PRIVATE);
         editor = sp.edit();
@@ -68,6 +74,21 @@ public class SettingsActivity extends AppCompatActivity {
                         })
                         .create();
                 dialog.show();
+            }
+        });
+
+        ivDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        tvGotoFeedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingsActivity.this, FeedbackActivity.class);
+                startActivity(intent);
+
             }
         });
     }

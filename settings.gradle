@@ -1,4 +1,4 @@
-include ':app', ':GeekNews', ':javatest', ':androiddataio'
+include ':app', ':GeekNews', ':javatest', ':androiddataio', ':toolbar'
 include ':library'
 include ':pullToRefreshListFragment'
 include ':pullToRefreshViewPager'

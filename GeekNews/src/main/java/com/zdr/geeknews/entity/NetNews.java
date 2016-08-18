@@ -1,10 +1,14 @@
 package com.zdr.geeknews.entity;
 
+import com.alibaba.fastjson.serializer.SerializeFilter;
+
+import java.io.Serializable;
+
 /**
  * JSON解析类
  * Created by zdr on 16-8-5.
  */
-public class NetNews {
+public class NetNews implements Serializable{
 
 
     /**

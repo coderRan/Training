@@ -1,35 +1,39 @@
 package com.zdr.geeknews.entity;
 
 /**
+ *
  * Created by zdr on 16-8-2.
  */
 public class NewsType {
     private int id;
     private String typeName;
-    private String uri;
-    private boolean checked = false;
+    private String url;
+    private int checked = 0;
     private int fragmetType = 1;
 
-
-    public NewsType(int id, String typeName, String uri) {
-        this.id = id;
-        this.typeName = typeName;
-        this.uri = uri;
+    public NewsType() {
     }
 
-    public NewsType(int id, String typeName, String uri,int fragmetType) {
+    public NewsType(int id, String typeName, String url) {
         this.id = id;
         this.typeName = typeName;
-        this.uri = uri;
+        this.url = url;
+    }
+
+    public NewsType(int id, String typeName, String url, int fragmetType,int checked) {
+        this.id = id;
+        this.typeName = typeName;
+        this.url = url;
         this.checked = checked;
         this.fragmetType = fragmetType;
     }
 
-    public boolean isChecked() {
+    public int isChecked() {
+
         return checked;
     }
 
-    public void setChecked(boolean checked) {
+    public void setChecked(int checked) {
         this.checked = checked;
     }
 
@@ -49,15 +53,19 @@ public class NewsType {
         this.typeName = typeName;
     }
 
-    public String getUri() {
-        return uri;
+    public String getUrl() {
+        return url;
     }
 
-    public void setUri(String uri) {
-        this.uri = uri;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public int getFragmetType() {
         return fragmetType;
+    }
+
+    public void setFragmetType(int fragmetType) {
+        this.fragmetType = fragmetType;
     }
 }

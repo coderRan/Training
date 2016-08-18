@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,7 +79,6 @@ public class XingZuoFragment extends Fragment {
         //spinnerM.setAdapter(spinnerAdapter);
         spinnerF = (Spinner) v.findViewById(R.id.spinner_f);
         //spinnerF.setAdapter(spinnerAdapter);
-
         spinnerM.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -141,7 +141,7 @@ public class XingZuoFragment extends Fragment {
     }
 
     public List<String> parseJSON(String json) {
-        String grade = null;
+        String grade;
         List<String> list = new ArrayList<>();
 
         try {
@@ -157,9 +157,7 @@ public class XingZuoFragment extends Fragment {
                 //"grade":"友情：★★★★★爱情：★★★★婚姻：★★★亲情：★★★★"
                 grade = ob.getString("grade");
                 String[] grades = grade.split("(友情)|(亲情)|(婚姻)|(爱情)");
-                for (int j = 0; j < grades.length; j++) {
-                    Log.e("GRADLE", grades[j]);
-                }
+
                 list.addAll(Arrays.asList(grades));
                 list.add(ob.getString("content"));
 

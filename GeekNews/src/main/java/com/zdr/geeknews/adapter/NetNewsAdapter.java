@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
@@ -20,6 +19,7 @@ import java.util.List;
 import utils.NetImageCache;
 
 /**
+ * 新闻适配器。
  * Created by zdr on 16-8-5.
  */
 public class NetNewsAdapter extends BaseAdapter {
@@ -54,7 +54,7 @@ public class NetNewsAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         NetNews netNews = mData.get(position);
         LayoutInflater inflater = LayoutInflater.from(this.mContext);
-        ViewHolder holder = null;
+        ViewHolder holder;
 
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.home_item_layout, null, false);
@@ -77,7 +77,10 @@ public class NetNewsAdapter extends BaseAdapter {
         holder.ctime.setText(netNews.getCtime());
 
         Glide.with(mContext).load(mData.get(position).getPicUrl())
-                .crossFade(2000).into(holder.picUrl);
+                .placeholder(R.mipmap.pic_load_failed)
+                .error(R.mipmap.pic_load_failed)
+                .crossFade(2000).into(holder.picUrl)
+        ;
         return convertView;
     }
 
